@@ -14,19 +14,32 @@ h1 {
     padding: 40px 40px;
 }
 
+img {
+    max-width: 80%;
+}
+
+div {
+    display: grid;
+}
+
 #game-board {
     grid-row: second-body-row / end;
 }
 
 #game-board {
-    display: grid;
     grid-template-columns:[first-column] 200px [second-column] 200px [third-column] 200px [end];
     grid-template-rows:[first-row] 200px [second-row] 200px [third-row] 200px [end];
 }
 
-#a-box{
+#a-box {
+    display: grid;
     grid-column:first-column / second-column;
-    grid-row:first-row / second-row;  
+    grid-row:first-row / second-row;
+}
+
+img {
+    align-self: center;
+    justify-self: center;
 }
 
 #b-box{
