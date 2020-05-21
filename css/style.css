@@ -1,3 +1,23 @@
+body {
+    grid-template-rows:[first-body-row] 200px [second-body-row] 200px [end];
+    display: grid;
+    background-color: black;
+    justify-content: center;
+}
+
+
+h1 {
+    grid-row: first-body-row / second-body-row;
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    padding: 40px 40px;
+}
+
+#game-board {
+    grid-row: second-body-row / end;
+}
+
 #game-board {
     display: grid;
     grid-template-columns:[first-column] 200px [second-column] 200px [third-column] 200px [end];
@@ -10,8 +30,8 @@
 }
 
 #b-box{
-    border-right: 5px solid black;
-    border-left: 5px solid black;
+    border-right: 5px solid white;
+    border-left: 5px solid white;
     grid-column:second-column / third-column;
     grid-row: first-row / second-row;
 }
@@ -22,21 +42,21 @@
 }
 
 #d-box{
-    border-top: 5px solid black;
-    border-bottom: 5px solid black;
+    border-top: 5px solid white;
+    border-bottom: 5px solid white;
     grid-column:first-column / second-column;
     grid-row: second-row / third-row;
 }
 
 #e-box{
-    border: 5px black solid;
+    border: 5px white solid;
     grid-column:second-column / third-column;
     grid-row: second-row / third-row;
 }
 
 #f-box{
-    border-top: 5px solid black;
-    border-bottom: 5px solid black;
+    border-top: 5px solid white;
+    border-bottom: 5px solid white;
     grid-column:third-column / end;
     grid-row: second-row / third-row;
 }
@@ -47,8 +67,8 @@
 }
 
 #h-box{
-    border-right: 5px solid black;
-    border-left: 5px solid black;
+    border-right: 5px solid white;
+    border-left: 5px solid white;
     grid-column:second-column / third-column;
     grid-row:third-row / end;  
 }
