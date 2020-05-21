@@ -1,0 +1,62 @@
+#game-board {
+    display: grid;
+    grid-template-columns:[first-column] 200px [second-column] 200px [third-column] 200px [end];
+    grid-template-rows:[first-row] 200px [second-row] 200px [third-row] 200px [end];
+}
+
+#a-box{
+    grid-column:first-column / second-column;
+    grid-row:first-row / second-row;  
+}
+
+#b-box{
+    border-right: 5px solid black;
+    border-left: 5px solid black;
+    grid-column:second-column / third-column;
+    grid-row: first-row / second-row;
+}
+
+#c-box{
+    grid-column:third-column / end;
+    grid-row: first-row / second-row;
+}
+
+#d-box{
+    border-top: 5px solid black;
+    border-bottom: 5px solid black;
+    grid-column:first-column / second-column;
+    grid-row: second-row / third-row;
+}
+
+#e-box{
+    border: 5px black solid;
+    grid-column:second-column / third-column;
+    grid-row: second-row / third-row;
+}
+
+#f-box{
+    border-top: 5px solid black;
+    border-bottom: 5px solid black;
+    grid-column:third-column / end;
+    grid-row: second-row / third-row;
+}
+
+#g-box{
+    grid-column:first-column / second-column;
+    grid-row:third-row / end;  
+}
+
+#h-box{
+    border-right: 5px solid black;
+    border-left: 5px solid black;
+    grid-column:second-column / third-column;
+    grid-row:third-row / end;  
+}
+
+#i-box{
+    grid-column:third-column / end;
+    grid-row:third-row / end;  
+}
+
+
+
