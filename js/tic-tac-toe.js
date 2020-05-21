@@ -7,4 +7,18 @@ function addElementListener(elements){
     }
 }
 
+function addNought(selectedElementId){
+    var nought = document.createElement('img');
+    nought.setAttribute('src', 'media/nought.png');
+    var element = document.getElementById(selectedElementId);
+    element.appendChild(nought);
+}
+
+function addCross(selectedElementId){
+    var cross = document.createElement('img');
+    cross.setAttribute('src', 'media/cross.png');
+    var element = document.getElementById(selectedElementId);
+    element.appendChild(cross);
+}
+
 addElementListener(document.getElementsByTagName('div'));
