@@ -1,4 +1,5 @@
 var userMarker;
+var isComputerTurn = false;
 
 function addElementListener(elements){
     for(var i = 0; i < elements.length; i++){
@@ -16,6 +17,9 @@ function addNought(element){
     element.appendChild(nought);
     element.removeEventListener('click', handleBoardClick);
     element.removeAttribute('class');
+    element.setAttribute('class', 'nought');
+    var noughtElements = document.querySelectorAll('.nought');
+    checkVictory(noughtElements);
 }
 
 function addCross(element){
@@ -24,6 +28,9 @@ function addCross(element){
     element.appendChild(cross);
     element.removeEventListener('click', handleBoardClick);
     element.removeAttribute('class');
+    element.setAttribute('class', 'cross');
+    var crossElements = document.querySelectorAll('.cross');
+    checkVictory(crossElements);
 }
 
 function handleBoardClick(event){
@@ -35,6 +42,7 @@ function handleBoardClick(event){
     } else {
         addCross(event.target);
     }
+    isComputerTurn = true;
     computerMove();
 }
 
@@ -63,19 +71,49 @@ function choosePlayer(){
 function computerMove(){
     var unmarkedBoxes = document.getElementsByClassName('unmarked');
     var computerMove = unmarkedBoxes[Math.floor(Math.random() * unmarkedBoxes.length)]
+    computerMove.removeAttribute('class');
     if(userMarker === 'cross'){
         addNought(computerMove);
     } else {
         addCross(computerMove);
     }
-    computerMove.removeAttribute('class');
+    isComputerTurn = false;
 }
 
 
 function initialMove(){
     var player = choosePlayer();
     if(player === "Computer"){
+        isComputerTurn = true;
         computerMove();
+    }
+}
+
+function checkVictory(markedElements){
+    var winningElements = [['a-box', 'b-box', 'c-box'], ['d-box', 'e-box', 'f-box'], ['g-box', 'h-box', 'i-box'], //rows
+                           ['a-box', 'd-box', 'g-box'], ['b-box', 'e-box', 'h-box'], ['c-box', 'f-box', 'i-box'], //columns
+                           ['a-box', 'e-box', 'i-box'], ['c-box', 'e-box', 'g-box']]; //diagonals
+    
+    var markedIds = [];
+    for(var i = 0; i < markedElements.length; i++){
+        markedIds.push(markedElements[i].id);
+    }
+    console.log(isComputerTurn);
+    console.log(markedIds);
+    for(var i = 0; i < winningElements.length; i++){
+        var count = 0;
+        for(var j = 0; j < 3; j++){
+            if(markedIds.includes(winningElements[i][j])){
+                count++;
+            }
+        }
+
+        if(count === 3 && isComputerTurn){
+            console.log("computer won!");
+            document.querySelector('p').textContent = "The computer wins!";
+        } else if(count === 3 && !isComputerTurn){
+            document.querySelector('p').textContent = "You win!";
+        }
     }
 }
 
