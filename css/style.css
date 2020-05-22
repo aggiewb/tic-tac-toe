@@ -1,15 +1,15 @@
 body {
     display: grid;
-    grid-template-rows: [first-body-row] 100px [second-body-row] 100px [third-body-row] 1fr [fourth-body-row] 2fr [fifth-body-row] 1fr [end];
+    grid-template-rows: [first-body-row] 100px [second-body-row] 100px [third-body-row] 1fr [fourth-body-row] 1fr [fifth-body-row] 100px [end];
     background-color: black;
-    justify-content: center;
+    justify-items: center;
     font-family: 'Galindo', cursive;
     font-size: 30px;
     color: white;
 }
 
 #bodyAfter {
-    grid-template-rows: [first-body-row] 100px [second-body-row] 150px [third-body-row] 0fr [fourth-body-row] 2fr [fifth-body-row] 1fr [end];
+    grid-template-rows: [first-body-row] 100px [second-body-row] 150px [third-body-row] 0fr [fourth-body-row] 1fr [fifth-body-row] 100px [end];
 }
 
 h1 {
@@ -39,6 +39,11 @@ aside {
     grid-row: fifth-body-row / end;
     display: flex;
     flex-direction: column;
+    margin-top: 100px;
+}
+
+#portfolio {
+    justify-content: center;
 }
 
 
