@@ -1,6 +1,6 @@
 body {
     display: grid;
-    grid-template-rows: [first-body-row] 100px [second-body-row] 100px [third-body-row] 1fr [fourth-body-row] 1fr [fifth-body-row] 100px [end];
+    grid-template-rows: [first-body-row] 100px [second-body-row] 100px [third-body-row] 1fr [fourth-body-row] 1fr [fifth-body-row] 100px [sixth-body-row] 40px [end];
     background-color: black;
     justify-items: center;
     font-family: 'Galindo', cursive;
@@ -9,7 +9,7 @@ body {
 }
 
 #bodyAfter {
-    grid-template-rows: [first-body-row] 100px [second-body-row] 150px [third-body-row] 0fr [fourth-body-row] 1fr [fifth-body-row] 100px [end];
+    grid-template-rows: [first-body-row] 100px [second-body-row] 100px [third-body-row] 0fr [fourth-body-row] 2fr [fifth-body-row] 100px [sixth-body-row] 40px [end];
 }
 
 h1 {
@@ -17,7 +17,7 @@ h1 {
     text-align: center;
 }
 
-img, #selection, p {
+img, #selection, p, button {
     align-self: center;
     justify-self: center;
 }
@@ -33,21 +33,24 @@ div {
 p {
     grid-row: second-body-row / third-body-row;
     font-size: 40px;
+    color: orange;
 }
 
-aside {
-    grid-row: fifth-body-row / end;
-    display: flex;
-    flex-direction: column;
+footer {
+    grid-row: sixth-body-row / end;
     margin-top: 100px;
 }
 
-#portfolio {
-    justify-content: center;
+button {
+    grid-row: fifth-body-row / sixth-body-row;
+    background-color: black;
+    border: 5px solid white;
+    color: white;
+    font-size: 24px;
+    padding: 5px;
 }
 
-
-#hide {
+#board-hide, #button-hide {
     display: none;
 }
 
@@ -62,7 +65,7 @@ aside {
     padding: 5px;
 }
 
-#selection img:hover {
+#selection img:hover, button:hover {
     background-color: orange;
     cursor: pointer;
 }
