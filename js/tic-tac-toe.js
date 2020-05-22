@@ -85,10 +85,14 @@ function addMark(element, mark){
 }
 
 function checkVictory(markedElements){
+    //check for a draw by looking to see if all elements have been marked;
+    if(document.getElementsByClassName('unmarked').length === 0){
+        pElementMessageToUser.textContent = "It's a draw!";
+    }
+    
     var winningElements = [['a-box', 'b-box', 'c-box'], ['d-box', 'e-box', 'f-box'], ['g-box', 'h-box', 'i-box'], //rows
                            ['a-box', 'd-box', 'g-box'], ['b-box', 'e-box', 'h-box'], ['c-box', 'f-box', 'i-box'], //columns
                            ['a-box', 'e-box', 'i-box'], ['c-box', 'e-box', 'g-box']]; //diagonals
-    
     var markedIds = [];
 
     //adds all elements that have been marked of a players mark type passed in to an empty array
@@ -112,8 +116,19 @@ function checkVictory(markedElements){
         } else if(count === 3 && !isComputerTurn){
             pElementMessageToUser.textContent = "You win!";
         }
+
+        if(count === 3){
+            removeListenerAfterWin();
+        }
     }
 }
 
-//to-do: add logic for a draw, add logic to play game again
+function removeListenerAfterWin(){
+    var unmarkedElements = document.getElementsByClassName('unmarked');
+    for(var i = 0; i < unmarkedElements.length; i++){
+        unmarkedElements[i].removeEventListener('click', handleBoardClick);
+    }
+}
+
+//to-do: add logic to play game again
 
