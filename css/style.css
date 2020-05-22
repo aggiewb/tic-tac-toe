@@ -1,32 +1,74 @@
 body {
-    grid-template-rows:[first-body-row] 200px [second-body-row] 200px [end];
     display: grid;
+    grid-template-rows:[first-body-row] 100px [second-body-row] 100px [third-body-row] 1fr [fourth-body-row] 2fr [end];
     background-color: black;
     justify-content: center;
 }
 
+#bodyAfter {
+    grid-template-rows:[first-body-row] 100px [second-body-row] 150px [third-body-row] 0fr [fourth-body-row] 2fr [end];
+}
 
 h1 {
     grid-row: first-body-row / second-body-row;
     color: white;
     font-size: 40px;
     text-align: center;
-    padding: 40px 40px;
 }
 
-#game-board {
-    grid-row: second-body-row / end;
+img, #selection, p {
+    align-self: center;
+    justify-self: center;
 }
 
-#game-board {
+img {
+    max-width: 70%;
+}
+
+div {
     display: grid;
+}
+
+p {
+    grid-row: second-body-row / third-body-row;
+    color: white;
+    font-size: 40px;
+}
+
+#selection {
+    display: grid;
+    grid-template-columns:[first-selection-column] 1fr [second-selection-column] 1fr [end];
+    grid-row: third-body-row / fourth-body-row;
+}
+
+#selection img {
+    border: 5px solid white;
+    padding: 5px;
+}
+
+#selection img:hover {
+    background-color: orange;
+    cursor: pointer;
+}
+
+#cross {
+    grid-row: first-selection-column / second-selection-column;
+}
+
+#nought {
+    grid-row: second-selection-column / end;
+}
+
+#game-board {
+    grid-row: fourth-body-row / end;
     grid-template-columns:[first-column] 200px [second-column] 200px [third-column] 200px [end];
     grid-template-rows:[first-row] 200px [second-row] 200px [third-row] 200px [end];
 }
 
-#a-box{
+#a-box {
+    display: grid;
     grid-column:first-column / second-column;
-    grid-row:first-row / second-row;  
+    grid-row:first-row / second-row;
 }
 
 #b-box{
