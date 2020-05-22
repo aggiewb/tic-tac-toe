@@ -3,6 +3,8 @@ body {
     grid-template-rows:[first-body-row] 100px [second-body-row] 100px [third-body-row] 1fr [fourth-body-row] 2fr [end];
     background-color: black;
     justify-content: center;
+    font-family: 'Galindo', cursive;
+    font-size: 30px;
 }
 
 #bodyAfter {
@@ -12,7 +14,6 @@ body {
 h1 {
     grid-row: first-body-row / second-body-row;
     color: white;
-    font-size: 40px;
     text-align: center;
 }
 
