@@ -5,6 +5,10 @@ body {
     justify-content: center;
 }
 
+#bodyAfter {
+    grid-template-rows:[first-body-row] 100px [second-body-row] 150px [third-body-row] 0fr [fourth-body-row] 2fr [end];
+}
+
 h1 {
     grid-row: first-body-row / second-body-row;
     color: white;
