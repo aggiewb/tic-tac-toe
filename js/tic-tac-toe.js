@@ -23,7 +23,7 @@ function handleSelectionClick(event){
     pElementMessageToUser.textContent = "Good Luck!";
     document.body.setAttribute('id', 'bodyAfter'); //adjust grid layout to remove selection grid
     selectionDiv.innerHTML = ""; //remove outer div containing selection images
-    document.getElementById('hide').setAttribute('id', 'game-board');
+    document.getElementById('board-hide').setAttribute('id', 'game-board');
     initialMove();
 }
 
@@ -88,6 +88,7 @@ function checkVictory(markedElements){
     //check for a draw by looking to see if all elements have been marked;
     if(document.getElementsByClassName('unmarked').length === 0){
         pElementMessageToUser.textContent = "It's a draw!";
+        document.querySelector('button').removeAttribute('id');
     }
     
     var winningElements = [['a-box', 'b-box', 'c-box'], ['d-box', 'e-box', 'f-box'], ['g-box', 'h-box', 'i-box'], //rows
@@ -118,6 +119,7 @@ function checkVictory(markedElements){
         }
 
         if(count === 3){
+            document.querySelector('button').removeAttribute('id');
             removeListenerAfterWin();
         }
     }
