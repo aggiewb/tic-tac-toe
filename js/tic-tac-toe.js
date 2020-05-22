@@ -51,9 +51,9 @@ function handleBoardClick(event){
     //target is an object that represents the element that fired the event
     //cannot use elements[i] since when the event is fired, i will always be outside of the elements' NodeList indexes
     if(userMarker === 'nought'){
-        addNought(event.target);
+        addMark(event.target, 'nought');
     } else {
-        addCross(event.target);
+        addMark(event.target, 'cross');
     }
     isComputerTurn = true; //set computer to play after user plays
     computerMove();
@@ -62,36 +62,25 @@ function handleBoardClick(event){
 function computerMove(){
     var unmarkedBoxes = document.getElementsByClassName('unmarked'); //all div boxes that haven't been used
     var computerMove = unmarkedBoxes[Math.floor(Math.random() * unmarkedBoxes.length)] //selection of random unused div element box
-    if(userMarker === 'cross'){
-        addNought(computerMove);
+    if(userMarker === 'nought'){
+        addMark(computerMove, 'cross');
     } else {
-        addCross(computerMove);
+        addMark(computerMove, 'nought');
     }
     isComputerTurn = false; //set user to play after computer plays
 }
 
-function addNought(element){
-    var nought = document.createElement('img');
-    nought.setAttribute('src', 'media/nought.png');
-    element.appendChild(nought);
-    element.removeEventListener('click', handleBoardClick);
-    element.removeAttribute('class'); //remove class of 'unmarked'
-     //check for victory after each marker placement
-    element.setAttribute('class', 'nought');
-    var noughtElements = document.querySelectorAll('.nought');
-    checkVictory(noughtElements);
-}
-
-function addCross(element){
-    var cross = document.createElement('img');
-    cross.setAttribute('src', 'media/cross.png');
-    element.appendChild(cross);
+//function to add either a cross or nought mark
+function addMark(element, mark){
+    var markImageElement = document.createElement('img');
+    markImageElement.setAttribute('src', 'media/' + mark + '.png');
+    element.appendChild(markImageElement);
     element.removeEventListener('click', handleBoardClick);
     element.removeAttribute('class'); //remove class of 'unmarked'
     //check for victory after each marker placement
-    element.setAttribute('class', 'cross');
-    var crossElements = document.querySelectorAll('.cross');
-    checkVictory(crossElements);
+    element.setAttribute('class', mark);
+    var markElements = document.querySelectorAll('.' + mark);
+    checkVictory(markElements);
 }
 
 function checkVictory(markedElements){
