@@ -115,3 +115,5 @@ function checkVictory(markedElements){
     }
 }
 
+//to-do: add logic for a draw, add logic to play game again
+
