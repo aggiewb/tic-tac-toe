@@ -1,3 +1,5 @@
+var userMarker;
+
 function addElementListener(elements){
     for(var i = 0; i < elements.length; i++){
         if(elements[i].id.includes('box')){
@@ -30,9 +32,12 @@ function handleBoardClick(event){
 }
 
 function handleSelectionClick(event){
-    var userMarker = event.target.id;
-    var selectionDiv = event.target.parentNode.parentNode;
-    selectionDiv.innerHTML = "";
+    userMarker = event.currentTarget.id;
+    var selectionDiv = event.currentTarget.parentNode; //outer div containing selection images
+    var directionsPTag = document.querySelector('p'); //p element with directions
+    directionsPTag.textContent = "Good Luck!";
+    document.body.setAttribute('id', 'bodyAfter'); //adjust grid layout
+    selectionDiv.innerHTML = ""; //remove outer div containing selection images
 }
 
 addElementListener(document.getElementsByTagName('div'));
