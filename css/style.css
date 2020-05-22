@@ -35,6 +35,10 @@ p {
     font-size: 40px;
 }
 
+#hide {
+    display: none;
+}
+
 #selection {
     display: grid;
     grid-template-columns:[first-selection-column] 1fr [second-selection-column] 1fr [end];
