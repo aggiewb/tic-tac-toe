@@ -14,14 +14,16 @@ function addNought(element){
     var nought = document.createElement('img');
     nought.setAttribute('src', 'media/nought.png');
     element.appendChild(nought);
-    element.removeEventListener('click', handleClick);
+    element.removeEventListener('click', handleBoardClick);
+    element.removeAttribute('class');
 }
 
 function addCross(element){
     var cross = document.createElement('img');
     cross.setAttribute('src', 'media/cross.png');
     element.appendChild(cross);
-    element.removeEventListener('click', handleClick);
+    element.removeEventListener('click', handleBoardClick);
+    element.removeAttribute('class');
 }
 
 function handleBoardClick(event){
@@ -29,6 +31,7 @@ function handleBoardClick(event){
     //target is an object that represents the element that fired the event
     //cannot use elements[i] since when the event is fired, i will always be outside of the elements' NodeList indexes
     addNought(event.target);
+    computerMove();
 }
 
 function handleSelectionClick(event){
@@ -38,6 +41,8 @@ function handleSelectionClick(event){
     directionsPTag.textContent = "Good Luck!";
     document.body.setAttribute('id', 'bodyAfter'); //adjust grid layout
     selectionDiv.innerHTML = ""; //remove outer div containing selection images
+    document.getElementById('hide').setAttribute('id', 'game-board');
+    initialMove();
 }
 
 function choosePlayer(){
@@ -51,4 +56,24 @@ function choosePlayer(){
     return firstPlayer;
 }
 
+function computerMove(){
+    var unmarkedBoxes = document.getElementsByClassName('unmarked');
+    var computerMove = unmarkedBoxes[Math.floor(Math.random() * unmarkedBoxes.length)]
+    if(userMarker === 'cross'){
+        addNought(computerMove);
+    } else {
+        addCross(computerMove);
+    }
+    computerMove.removeAttribute('class');
+}
+
+
+function initialMove(){
+    var player = choosePlayer();
+    if(player === "Computer"){
+        computerMove();
+    }
+}
+
 addElementListener(document.getElementsByTagName('div'));
+
