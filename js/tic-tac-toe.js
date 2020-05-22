@@ -1,4 +1,4 @@
-//global variables to use in mutiple functions
+//global variables to use in multiple functions
 var userMarker;
 var isComputerTurn = false;
 var pElementMessageToUser = document.querySelector('p');
