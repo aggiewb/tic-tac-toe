@@ -1,6 +1,8 @@
+//global variables to use in mutiple functions
 var userMarker;
 var isComputerTurn = false;
 
+//add element listeners to board and user marker selection selection
 function addElementListener(elements){
     for(var i = 0; i < elements.length; i++){
         if(elements[i].id.includes('box')){
@@ -11,26 +13,37 @@ function addElementListener(elements){
     }
 }
 
-function addNought(element){
-    var nought = document.createElement('img');
-    nought.setAttribute('src', 'media/nought.png');
-    element.appendChild(nought);
-    element.removeEventListener('click', handleBoardClick);
-    element.removeAttribute('class');
-    element.setAttribute('class', 'nought');
-    var noughtElements = document.querySelectorAll('.nought');
-    checkVictory(noughtElements);
+//add event listeners on page load
+addElementListener(document.getElementsByTagName('div'));
+
+function handleSelectionClick(event){
+    userMarker = event.currentTarget.id;
+    var selectionDiv = event.currentTarget.parentNode; //outer div containing selection images
+    document.querySelector('p').textContent = "Good Luck!";
+    document.body.setAttribute('id', 'bodyAfter'); //adjust grid layout to remove selection grid
+    selectionDiv.innerHTML = ""; //remove outer div containing selection images
+    document.getElementById('hide').setAttribute('id', 'game-board');
+    initialMove();
 }
 
-function addCross(element){
-    var cross = document.createElement('img');
-    cross.setAttribute('src', 'media/cross.png');
-    element.appendChild(cross);
-    element.removeEventListener('click', handleBoardClick);
-    element.removeAttribute('class');
-    element.setAttribute('class', 'cross');
-    var crossElements = document.querySelectorAll('.cross');
-    checkVictory(crossElements);
+function chooseFirstPlayer(){
+    var players = ['You', 'Computer'];
+    var firstPlayer = players[Math.floor(Math.random() * 2)]; //randomly chooses which player will go first
+    if(firstPlayer === 'You'){
+        document.querySelector('p').textContent = firstPlayer + " move first!";
+    } else {
+        document.querySelector('p').textContent = firstPlayer + " has the first move!";
+    }
+    return firstPlayer;
+}
+
+//function to be called after user marker selection is made
+function initialMove(){
+    var player = chooseFirstPlayer();
+    if(player === "Computer"){
+        isComputerTurn = true;
+        computerMove();
+    }
 }
 
 function handleBoardClick(event){
@@ -42,51 +55,43 @@ function handleBoardClick(event){
     } else {
         addCross(event.target);
     }
-    isComputerTurn = true;
+    isComputerTurn = true; //set computer to play after user plays
     computerMove();
 }
 
-function handleSelectionClick(event){
-    userMarker = event.currentTarget.id;
-    var selectionDiv = event.currentTarget.parentNode; //outer div containing selection images
-    var directionsPTag = document.querySelector('p'); //p element with directions
-    directionsPTag.textContent = "Good Luck!";
-    document.body.setAttribute('id', 'bodyAfter'); //adjust grid layout
-    selectionDiv.innerHTML = ""; //remove outer div containing selection images
-    document.getElementById('hide').setAttribute('id', 'game-board');
-    initialMove();
-}
-
-function choosePlayer(){
-    var players = ['You', 'Computer'];
-    var firstPlayer = players[Math.floor(Math.random() * 2)];
-    if(firstPlayer === 'You'){
-        document.querySelector('p').textContent = firstPlayer + " move first!";
-    } else {
-        document.querySelector('p').textContent = firstPlayer + " has the first move!";
-    }
-    return firstPlayer;
-}
-
 function computerMove(){
-    var unmarkedBoxes = document.getElementsByClassName('unmarked');
-    var computerMove = unmarkedBoxes[Math.floor(Math.random() * unmarkedBoxes.length)]
-    computerMove.removeAttribute('class');
+    var unmarkedBoxes = document.getElementsByClassName('unmarked'); //all div boxes that haven't been used
+    var computerMove = unmarkedBoxes[Math.floor(Math.random() * unmarkedBoxes.length)] //selection of random unused div element box
     if(userMarker === 'cross'){
         addNought(computerMove);
     } else {
         addCross(computerMove);
     }
-    isComputerTurn = false;
+    isComputerTurn = false; //set user to play after computer plays
 }
 
+function addNought(element){
+    var nought = document.createElement('img');
+    nought.setAttribute('src', 'media/nought.png');
+    element.appendChild(nought);
+    element.removeEventListener('click', handleBoardClick);
+    element.removeAttribute('class'); //remove class of 'unmarked'
+     //check for victory after each marker placement
+    element.setAttribute('class', 'nought');
+    var noughtElements = document.querySelectorAll('.nought');
+    checkVictory(noughtElements);
+}
 
-function initialMove(){
-    var player = choosePlayer();
-    if(player === "Computer"){
-        isComputerTurn = true;
-        computerMove();
-    }
+function addCross(element){
+    var cross = document.createElement('img');
+    cross.setAttribute('src', 'media/cross.png');
+    element.appendChild(cross);
+    element.removeEventListener('click', handleBoardClick);
+    element.removeAttribute('class'); //remove class of 'unmarked'
+    //check for victory after each marker placement
+    element.setAttribute('class', 'cross');
+    var crossElements = document.querySelectorAll('.cross');
+    checkVictory(crossElements);
 }
 
 function checkVictory(markedElements){
@@ -95,11 +100,13 @@ function checkVictory(markedElements){
                            ['a-box', 'e-box', 'i-box'], ['c-box', 'e-box', 'g-box']]; //diagonals
     
     var markedIds = [];
+
+    //adds all elements that have been marked of a players mark type passed in to an empty array
     for(var i = 0; i < markedElements.length; i++){
         markedIds.push(markedElements[i].id);
     }
-    console.log(isComputerTurn);
-    console.log(markedIds);
+    
+    //checks each array in winningElement to see if one matches the markedIds
     for(var i = 0; i < winningElements.length; i++){
         var count = 0;
         for(var j = 0; j < 3; j++){
@@ -108,6 +115,7 @@ function checkVictory(markedElements){
             }
         }
 
+        //checks for a matching 3 array elements at the end of each winningElement array check
         if(count === 3 && isComputerTurn){
             console.log("computer won!");
             document.querySelector('p').textContent = "The computer wins!";
@@ -116,6 +124,4 @@ function checkVictory(markedElements){
         }
     }
 }
-
-addElementListener(document.getElementsByTagName('div'));
 
