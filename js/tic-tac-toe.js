@@ -1,6 +1,7 @@
 //global variables to use in mutiple functions
 var userMarker;
 var isComputerTurn = false;
+var pElementMessageToUser = document.querySelector('p');
 
 //add element listeners to board and user marker selection selection
 function addElementListener(elements){
@@ -19,7 +20,7 @@ addElementListener(document.getElementsByTagName('div'));
 function handleSelectionClick(event){
     userMarker = event.currentTarget.id;
     var selectionDiv = event.currentTarget.parentNode; //outer div containing selection images
-    document.querySelector('p').textContent = "Good Luck!";
+    pElementMessageToUser.textContent = "Good Luck!";
     document.body.setAttribute('id', 'bodyAfter'); //adjust grid layout to remove selection grid
     selectionDiv.innerHTML = ""; //remove outer div containing selection images
     document.getElementById('hide').setAttribute('id', 'game-board');
@@ -30,9 +31,9 @@ function chooseFirstPlayer(){
     var players = ['You', 'Computer'];
     var firstPlayer = players[Math.floor(Math.random() * 2)]; //randomly chooses which player will go first
     if(firstPlayer === 'You'){
-        document.querySelector('p').textContent = firstPlayer + " move first!";
+        pElementMessageToUser.textContent = firstPlayer + " move first!";
     } else {
-        document.querySelector('p').textContent = firstPlayer + " has the first move!";
+        pElementMessageToUser.textContent = firstPlayer + " has the first move!";
     }
     return firstPlayer;
 }
@@ -107,9 +108,9 @@ function checkVictory(markedElements){
         //checks for a matching 3 array elements at the end of each winningElement array check
         if(count === 3 && isComputerTurn){
             console.log("computer won!");
-            document.querySelector('p').textContent = "The computer wins!";
+            pElementMessageToUser.textContent = "The computer wins!";
         } else if(count === 3 && !isComputerTurn){
-            document.querySelector('p').textContent = "You win!";
+            pElementMessageToUser.textContent = "You win!";
         }
     }
 }
