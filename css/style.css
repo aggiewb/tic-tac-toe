@@ -1,6 +1,6 @@
 body {
     display: grid;
-    grid-template-rows:[first-body-row] 100px [second-body-row] 100px [third-body-row] 1fr [fourth-body-row] 2fr [fifth-body-row] 1fr [end];
+    grid-template-rows: [first-body-row] 100px [second-body-row] 100px [third-body-row] 1fr [fourth-body-row] 2fr [fifth-body-row] 1fr [end];
     background-color: black;
     justify-content: center;
     font-family: 'Galindo', cursive;
@@ -9,7 +9,7 @@ body {
 }
 
 #bodyAfter {
-    grid-template-rows:[first-body-row] 100px [second-body-row] 150px [third-body-row] 0fr [fourth-body-row] 2fr [fifth-body-row] 1fr [end];
+    grid-template-rows: [first-body-row] 100px [second-body-row] 150px [third-body-row] 0fr [fourth-body-row] 2fr [fifth-body-row] 1fr [end];
 }
 
 h1 {
@@ -48,7 +48,7 @@ aside {
 
 #selection {
     display: grid;
-    grid-template-columns:[first-selection-column] 1fr [second-selection-column] 1fr [end];
+    grid-template-columns: [first-selection-column] 1fr [second-selection-column] 1fr [end];
     grid-row: third-body-row / fourth-body-row;
 }
 
@@ -72,63 +72,63 @@ aside {
 
 #game-board {
     grid-row: fourth-body-row / fifth-body-row;
-    grid-template-columns:[first-column] 200px [second-column] 200px [third-column] 200px [end];
-    grid-template-rows:[first-row] 200px [second-row] 200px [third-row] 200px [end];
+    grid-template-columns: [first-column] 200px [second-column] 200px [third-column] 200px [end];
+    grid-template-rows: [first-row] 200px [second-row] 200px [third-row] 200px [end];
 }
 
 #a-box {
     display: grid;
-    grid-column:first-column / second-column;
-    grid-row:first-row / second-row;
+    grid-column: first-column / second-column;
+    grid-row: first-row / second-row;
 }
 
 #b-box{
     border-right: 5px solid white;
     border-left: 5px solid white;
-    grid-column:second-column / third-column;
+    grid-column: second-column / third-column;
     grid-row: first-row / second-row;
 }
 
 #c-box{
-    grid-column:third-column / end;
+    grid-column: third-column / end;
     grid-row: first-row / second-row;
 }
 
 #d-box{
     border-top: 5px solid white;
     border-bottom: 5px solid white;
-    grid-column:first-column / second-column;
+    grid-column: first-column / second-column;
     grid-row: second-row / third-row;
 }
 
 #e-box{
     border: 5px white solid;
-    grid-column:second-column / third-column;
+    grid-column: second-column / third-column;
     grid-row: second-row / third-row;
 }
 
 #f-box{
     border-top: 5px solid white;
     border-bottom: 5px solid white;
-    grid-column:third-column / end;
+    grid-column: third-column / end;
     grid-row: second-row / third-row;
 }
 
 #g-box{
-    grid-column:first-column / second-column;
-    grid-row:third-row / end;  
+    grid-column: first-column / second-column;
+    grid-row: third-row / end;  
 }
 
 #h-box{
     border-right: 5px solid white;
     border-left: 5px solid white;
-    grid-column:second-column / third-column;
-    grid-row:third-row / end;  
+    grid-column: second-column / third-column;
+    grid-row: third-row / end;  
 }
 
 #i-box{
-    grid-column:third-column / end;
-    grid-row:third-row / end;  
+    grid-column: third-column / end;
+    grid-row: third-row / end;  
 }
 
 
