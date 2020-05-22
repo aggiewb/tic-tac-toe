@@ -40,4 +40,15 @@ function handleSelectionClick(event){
     selectionDiv.innerHTML = ""; //remove outer div containing selection images
 }
 
+function choosePlayer(){
+    var players = ['You', 'Computer'];
+    var firstPlayer = players[Math.floor(Math.random() * 2)];
+    if(firstPlayer === 'You'){
+        document.querySelector('p').textContent = firstPlayer + " move first!";
+    } else {
+        document.querySelector('p').textContent = firstPlayer + " has the first move!";
+    }
+    return firstPlayer;
+}
+
 addElementListener(document.getElementsByTagName('div'));
