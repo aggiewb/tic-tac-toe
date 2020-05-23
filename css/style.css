@@ -38,6 +38,9 @@ p {
 footer {
     grid-row: sixth-body-row / end;
     margin-top: 6.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 button {
