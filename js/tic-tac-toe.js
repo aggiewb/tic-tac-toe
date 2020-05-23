@@ -2,6 +2,7 @@
 var userMarker;
 var isComputerTurn = false;
 var pElementMessageToUser = document.querySelector('p');
+var isGameOver = false;
 
 //add element listeners to board and user marker selection selection
 function addElementListener(elements){
@@ -60,6 +61,11 @@ function handleBoardClick(event){
         addMark(event.target, 'cross');
     }
     isComputerTurn = true; //set computer to play after user plays
+    //check to see if a win has been achieved before the computer makes its move, 
+    //and prevent it from doing so if there is a win or draw
+    if(isGameOver){ 
+        return;
+    }
     computerMove();
 }
 
@@ -110,20 +116,25 @@ function checkVictory(markedElements){
 
         //checks for a matching 3 array elements at the end of each winningElement array check
         if(count === 3 && isComputerTurn){
-            pElementMessageToUser.textContent = "The computer wins!";
+            gameOver("The computer wins!");
+            return;
         } else if(count === 3 && !isComputerTurn){
-            pElementMessageToUser.textContent = "You win!";
-        } else if(document.getElementsByClassName('unmarked').length === 0 && count < 3){
-            pElementMessageToUser.textContent = "It's a draw!";
-            document.querySelector('button').removeAttribute('id');
-        }
-
-        if(count === 3){
-            document.querySelector('button').removeAttribute('id');
-            removeListenerAfterWin();
+            gameOver("You win!");
+            return;
+        } else if(document.querySelectorAll('.unmarked').length === 0 && i === winningElements.length - 1){
+            gameOver("It's a draw!");
         }
     }
 }
+
+//called when there is a winning condition or a draw
+function gameOver(userMessage){
+    isGameOver = true;
+    pElementMessageToUser.textContent = userMessage;
+    document.querySelector('button').removeAttribute('id');
+    removeListenerAfterWin();
+}
+
 
 function removeListenerAfterWin(){
     var unmarkedElements = document.getElementsByClassName('unmarked');
@@ -132,18 +143,19 @@ function removeListenerAfterWin(){
     }
 }
 
+//next three functions reset the board state, selection state, and adds/removes playAgain button which has an eventListener
 function playAgain(){
     document.querySelector('button').setAttribute('id', 'button-hide'); //remove play again button
     resetSelectionState();
     resetGameBoardState();
-    addElementListener(document.getElementsByTagName('div')); //reapply event listeners
+    addElementListener(document.getElementsByTagName('div')); //reapply board event listeners
+    addElementListener(document.getElementsByTagName('button')); //apply replay button event listener
 
     var gameBoard = document.getElementById('game-board'); //remove game board
     gameBoard.removeAttribute('id');
     gameBoard.setAttribute('id', 'board-hide');
-    
-    addElementListener(document.getElementsByTagName('div')); //reapply event listeners
-    addElementListener(document.getElementsByTagName('button'));
+
+    isGameOver = false;
 }
 
 function resetSelectionState(){
@@ -184,6 +196,3 @@ function resetGameBoardState(){
         }
     }
 }
-
-//to-do: if the board is filled, and the user last moves, fix code that the computer will try do go again
-
