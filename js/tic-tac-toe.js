@@ -115,7 +115,6 @@ function checkVictory(markedElements){
 
         //checks for a matching 3 array elements at the end of each winningElement array check
         if(count === 3 && isComputerTurn){
-            console.log("computer won!");
             pElementMessageToUser.textContent = "The computer wins!";
         } else if(count === 3 && !isComputerTurn){
             pElementMessageToUser.textContent = "You win!";
