@@ -196,3 +196,6 @@ function resetGameBoardState(){
         }
     }
 }
+
+var date = new Date();
+document.querySelector('footer').innerHTML = "Aggie Wheeler Bateman &copy; " +  date.getFullYear() + "<a href=\"https://www.aggiewheelerbateman.com\" target=\"_blank\">Personal Portfolio</a>";
