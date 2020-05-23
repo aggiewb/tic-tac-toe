@@ -89,11 +89,6 @@ function addMark(element, mark){
 
 function checkVictory(markedElements){
     //check for a draw by looking to see if all elements have been marked;
-    if(document.getElementsByClassName('unmarked').length === 0){
-        pElementMessageToUser.textContent = "It's a draw!";
-        document.querySelector('button').removeAttribute('id');
-    }
-    
     var winningElements = [['a-box', 'b-box', 'c-box'], ['d-box', 'e-box', 'f-box'], ['g-box', 'h-box', 'i-box'], //rows
                            ['a-box', 'd-box', 'g-box'], ['b-box', 'e-box', 'h-box'], ['c-box', 'f-box', 'i-box'], //columns
                            ['a-box', 'e-box', 'i-box'], ['c-box', 'e-box', 'g-box']]; //diagonals
@@ -118,6 +113,9 @@ function checkVictory(markedElements){
             pElementMessageToUser.textContent = "The computer wins!";
         } else if(count === 3 && !isComputerTurn){
             pElementMessageToUser.textContent = "You win!";
+        } else if(document.getElementsByClassName('unmarked').length === 0 && count < 3){
+            pElementMessageToUser.textContent = "It's a draw!";
+            document.querySelector('button').removeAttribute('id');
         }
 
         if(count === 3){
