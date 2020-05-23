@@ -1,15 +1,15 @@
 body {
     display: grid;
-    grid-template-rows: [first-body-row] 100px [second-body-row] 100px [third-body-row] 1fr [fourth-body-row] 1fr [fifth-body-row] 100px [sixth-body-row] 40px [end];
+    grid-template-rows: [first-body-row] 7.8125rem [second-body-row] 7.8125rem [third-body-row] 0.5fr [fourth-body-row] 0.5fr [fifth-body-row] 6.25rem [sixth-body-row] 2.5rem [end];
     background-color: black;
     justify-items: center;
     font-family: 'Galindo', cursive;
-    font-size: 30px;
+    font-size: 40px;
     color: white;
 }
 
 #bodyAfter {
-    grid-template-rows: [first-body-row] 100px [second-body-row] 100px [third-body-row] 0fr [fourth-body-row] 2fr [fifth-body-row] 100px [sixth-body-row] 40px [end];
+    grid-template-rows: [first-body-row] 7.8125rem [second-body-row] 7.8125rem [third-body-row] 0fr [fourth-body-row] 1fr [fifth-body-row] 6.25rem [sixth-body-row] 2.5rem [end];
 }
 
 h1 {
@@ -32,20 +32,23 @@ div {
 
 p {
     grid-row: second-body-row / third-body-row;
-    font-size: 40px;
     color: orange;
 }
 
 footer {
     grid-row: sixth-body-row / end;
-    margin-top: 100px;
+    margin-top: 3.125rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 button {
     grid-row: fifth-body-row / sixth-body-row;
     background-color: black;
-    border: 5px solid white;
+    border: 0.3125rem solid white;
     color: white;
+    font-family: 'Galindo', cursive;
     font-size: 24px;
     padding: 5px;
 }
@@ -61,8 +64,8 @@ button {
 }
 
 #selection img {
-    border: 5px solid white;
-    padding: 5px;
+    border: 0.3125rem solid white;
+    padding: 0.3125rem;
 }
 
 #selection img:hover, button:hover {
@@ -91,8 +94,8 @@ button {
 }
 
 #b-box{
-    border-right: 5px solid white;
-    border-left: 5px solid white;
+    border-right: 0.3125rem solid white;
+    border-left: 0.3125rem solid white;
     grid-column: second-column / third-column;
     grid-row: first-row / second-row;
 }
@@ -103,21 +106,21 @@ button {
 }
 
 #d-box{
-    border-top: 5px solid white;
-    border-bottom: 5px solid white;
+    border-top: 0.3125rem solid white;
+    border-bottom: 0.3125rem solid white;
     grid-column: first-column / second-column;
     grid-row: second-row / third-row;
 }
 
 #e-box{
-    border: 5px white solid;
+    border: 0.3125rem white solid;
     grid-column: second-column / third-column;
     grid-row: second-row / third-row;
 }
 
 #f-box{
-    border-top: 5px solid white;
-    border-bottom: 5px solid white;
+    border-top: 0.3125rem solid white;
+    border-bottom: 0.3125rem solid white;
     grid-column: third-column / end;
     grid-row: second-row / third-row;
 }
@@ -128,8 +131,8 @@ button {
 }
 
 #h-box{
-    border-right: 5px solid white;
-    border-left: 5px solid white;
+    border-right: 0.3125rem solid white;
+    border-left: 0.3125rem solid white;
     grid-column: second-column / third-column;
     grid-row: third-row / end;  
 }
@@ -137,6 +140,32 @@ button {
 #i-box{
     grid-column: third-column / end;
     grid-row: third-row / end;  
+}
+
+@media only screen and (max-width: 800px){
+    body{
+        font-size: 1.25rem;
+        grid-template-rows: [first-body-row] 3.75rem [second-body-row] 3.75rem [third-body-row] 1fr [fourth-body-row] 0.5fr [fifth-body-row] 3.75rem [sixth-body-row] 1.875rem [end];
+
+    }
+
+    #bodyAfter {
+        grid-template-rows: [first-body-row] 3.75rem [second-body-row] 3.75rem [third-body-row] 0fr [fourth-body-row] 0.5fr [fifth-body-row] 3.75rem [sixth-body-row] 1.875rem [end];
+    }
+
+    #game-board {
+        grid-template-columns: [first-column] 6.875rem [second-column] 6.875rem [third-column] 6.875rem [end];
+        grid-template-rows: [first-row] 6.875rem [second-row] 6.875rem [third-row] 6.875rem [end];
+    }
+    
+
+    img {
+        max-width: 50%;
+    }
+
+    button {
+        font-size: 1.25rem;
+    }
 }
 
 
