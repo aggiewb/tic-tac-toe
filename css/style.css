@@ -37,7 +37,7 @@ p {
 
 footer {
     grid-row: sixth-body-row / end;
-    margin-top: 6.25rem;
+    margin-top: 3.125rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -154,8 +154,8 @@ button {
     }
 
     #game-board {
-        grid-template-columns: [first-column] 6.25rem [second-column] 6.25rem [third-column] 6.25rem [end];
-        grid-template-rows: [first-row] 6.25rem [second-row] 6.25rem [third-row] 6.25rem [end];
+        grid-template-columns: [first-column] 6.875rem [second-column] 6.875rem [third-column] 6.875rem [end];
+        grid-template-rows: [first-row] 6.875rem [second-row] 6.875rem [third-row] 6.875rem [end];
     }
     
 
