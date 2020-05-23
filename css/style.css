@@ -149,6 +149,11 @@ button {
     #bodyAfter {
         grid-template-rows: [first-body-row] 3.75rem [second-body-row] 3.75rem [third-body-row] 0fr [fourth-body-row] 0.5fr [fifth-body-row] 3.75rem [sixth-body-row] 1.875rem [end];
     }
+
+    #game-board {
+        grid-template-columns: [first-column] 6.25rem [second-column] 6.25rem [third-column] 6.25rem [end];
+        grid-template-rows: [first-row] 6.25rem [second-row] 6.25rem [third-row] 6.25rem [end];
+    }
     
 
     img {
