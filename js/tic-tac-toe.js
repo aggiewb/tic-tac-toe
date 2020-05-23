@@ -10,12 +10,15 @@ function addElementListener(elements){
             elements[i].addEventListener('click', handleBoardClick);
         } else if(elements[i].id.includes('cross') || elements[i].id.includes('nought')){
             elements[i].addEventListener('click', handleSelectionClick);
+        } else if(elements[i].type === 'button'){
+            elements[i].addEventListener('click', playAgain);
         }
     }
 }
 
 //add event listeners on page load
 addElementListener(document.getElementsByTagName('div'));
+addElementListener(document.getElementsByTagName('button'));
 
 function handleSelectionClick(event){
     userMarker = event.currentTarget.id;
@@ -23,7 +26,7 @@ function handleSelectionClick(event){
     pElementMessageToUser.textContent = "Good Luck!";
     document.body.setAttribute('id', 'bodyAfter'); //adjust grid layout to remove selection grid
     selectionDiv.innerHTML = ""; //remove outer div containing selection images
-    document.getElementById('hide').setAttribute('id', 'game-board');
+    document.getElementById('board-hide').setAttribute('id', 'game-board');
     initialMove();
 }
 
@@ -85,10 +88,10 @@ function addMark(element, mark){
 }
 
 function checkVictory(markedElements){
+    //check for a draw by looking to see if all elements have been marked;
     var winningElements = [['a-box', 'b-box', 'c-box'], ['d-box', 'e-box', 'f-box'], ['g-box', 'h-box', 'i-box'], //rows
                            ['a-box', 'd-box', 'g-box'], ['b-box', 'e-box', 'h-box'], ['c-box', 'f-box', 'i-box'], //columns
                            ['a-box', 'e-box', 'i-box'], ['c-box', 'e-box', 'g-box']]; //diagonals
-    
     var markedIds = [];
 
     //adds all elements that have been marked of a players mark type passed in to an empty array
@@ -107,13 +110,80 @@ function checkVictory(markedElements){
 
         //checks for a matching 3 array elements at the end of each winningElement array check
         if(count === 3 && isComputerTurn){
-            console.log("computer won!");
             pElementMessageToUser.textContent = "The computer wins!";
         } else if(count === 3 && !isComputerTurn){
             pElementMessageToUser.textContent = "You win!";
+        } else if(document.getElementsByClassName('unmarked').length === 0 && count < 3){
+            pElementMessageToUser.textContent = "It's a draw!";
+            document.querySelector('button').removeAttribute('id');
+        }
+
+        if(count === 3){
+            document.querySelector('button').removeAttribute('id');
+            removeListenerAfterWin();
         }
     }
 }
 
-//to-do: add logic for a draw, add logic to play game again
+function removeListenerAfterWin(){
+    var unmarkedElements = document.getElementsByClassName('unmarked');
+    for(var i = 0; i < unmarkedElements.length; i++){
+        unmarkedElements[i].removeEventListener('click', handleBoardClick);
+    }
+}
+
+function playAgain(){
+    document.querySelector('button').setAttribute('id', 'button-hide'); //remove play again button
+    resetSelectionState();
+    resetGameBoardState();
+    addElementListener(document.getElementsByTagName('div')); //reapply event listeners
+
+    var gameBoard = document.getElementById('game-board'); //remove game board
+    gameBoard.removeAttribute('id');
+    gameBoard.setAttribute('id', 'board-hide');
+    
+    addElementListener(document.getElementsByTagName('div')); //reapply event listeners
+    addElementListener(document.getElementsByTagName('button'));
+}
+
+function resetSelectionState(){
+    pElementMessageToUser.textContent = "Select cross or nought:"; //add selection div and contents
+    document.body.removeAttribute('id');
+    var selectionDiv = document.getElementById('selection');
+    var crossImageElement = document.createElement('div');
+    var noughtImageElement = document.createElement('div');
+    var crossImage = document.createElement('img');
+    var noughtImage = document.createElement('img');
+    crossImage.setAttribute('src', 'media/cross.png');
+    noughtImage.setAttribute('src', 'media/nought.png');
+    crossImageElement.setAttribute('id', 'cross');
+    noughtImageElement.setAttribute('id', 'nought');
+    crossImageElement.appendChild(crossImage);
+    noughtImageElement.appendChild(noughtImage);
+    selectionDiv.appendChild(crossImageElement);
+    selectionDiv.appendChild(noughtImageElement);
+}
+
+function resetGameBoardState(){
+    var crossElements = document.getElementsByClassName('cross');
+    //use a while loop since getElementsByClassName is a LIVE NodeList and it dynamically changes the list each time setAttribute changes the class value
+    while(crossElements.length){
+        crossElements[0].setAttribute('class', 'unmarked');
+    }
+
+    var noughtElements = document.getElementsByClassName('nought');
+    //use a while loop since getElementsByClassName is a LIVE NodeList and it dynamically changes the list each time setAttribute changes the class value
+    while(noughtElements.length){
+        noughtElements[0].setAttribute('class', 'unmarked');
+    }
+
+    var resetGameBoardElements = document.getElementsByClassName('unmarked');
+    for(var i = 0; i < resetGameBoardElements.length; i++){
+        if(resetGameBoardElements[i].querySelector('img') != null){
+            resetGameBoardElements[i].removeChild(resetGameBoardElements[i].querySelector('img'));
+        }
+    }
+}
+
+//to-do: if the board is filled, and the user last moves, fix code that the computer will try do go again
 
