@@ -1,6 +1,6 @@
 body {
     display: grid;
-    grid-template-rows: [first-body-row] 125px [second-body-row] 125px [third-body-row] 0.5fr [fourth-body-row] 0.5fr [fifth-body-row] 100px [sixth-body-row] 40px [end];
+    grid-template-rows: [first-body-row] 7.8125rem [second-body-row] 7.8125rem [third-body-row] 0.5fr [fourth-body-row] 0.5fr [fifth-body-row] 6.25rem [sixth-body-row] 2.5rem [end];
     background-color: black;
     justify-items: center;
     font-family: 'Galindo', cursive;
@@ -9,7 +9,7 @@ body {
 }
 
 #bodyAfter {
-    grid-template-rows: [first-body-row] 125px [second-body-row] 125px [third-body-row] 0fr [fourth-body-row] 1fr [fifth-body-row] 100px [sixth-body-row] 40px [end];
+    grid-template-rows: [first-body-row] 7.8125rem [second-body-row] 7.8125rem [third-body-row] 0fr [fourth-body-row] 1fr [fifth-body-row] 6.25rem [sixth-body-row] 2.5rem [end];
 }
 
 h1 {
@@ -37,13 +37,13 @@ p {
 
 footer {
     grid-row: sixth-body-row / end;
-    margin-top: 100px;
+    margin-top: 6.25rem;
 }
 
 button {
     grid-row: fifth-body-row / sixth-body-row;
     background-color: black;
-    border: 5px solid white;
+    border: 0.3125rem solid white;
     color: white;
     font-family: 'Galindo', cursive;
     font-size: 24px;
@@ -61,8 +61,8 @@ button {
 }
 
 #selection img {
-    border: 5px solid white;
-    padding: 5px;
+    border: 0.3125rem solid white;
+    padding: 0.3125rem;
 }
 
 #selection img:hover, button:hover {
@@ -91,8 +91,8 @@ button {
 }
 
 #b-box{
-    border-right: 5px solid white;
-    border-left: 5px solid white;
+    border-right: 0.3125rem solid white;
+    border-left: 0.3125rem solid white;
     grid-column: second-column / third-column;
     grid-row: first-row / second-row;
 }
@@ -103,21 +103,21 @@ button {
 }
 
 #d-box{
-    border-top: 5px solid white;
-    border-bottom: 5px solid white;
+    border-top: 0.3125rem solid white;
+    border-bottom: 0.3125rem solid white;
     grid-column: first-column / second-column;
     grid-row: second-row / third-row;
 }
 
 #e-box{
-    border: 5px white solid;
+    border: 0.3125rem white solid;
     grid-column: second-column / third-column;
     grid-row: second-row / third-row;
 }
 
 #f-box{
-    border-top: 5px solid white;
-    border-bottom: 5px solid white;
+    border-top: 0.3125rem solid white;
+    border-bottom: 0.3125rem solid white;
     grid-column: third-column / end;
     grid-row: second-row / third-row;
 }
@@ -128,8 +128,8 @@ button {
 }
 
 #h-box{
-    border-right: 5px solid white;
-    border-left: 5px solid white;
+    border-right: 0.3125rem solid white;
+    border-left: 0.3125rem solid white;
     grid-column: second-column / third-column;
     grid-row: third-row / end;  
 }
@@ -141,13 +141,13 @@ button {
 
 @media only screen and (max-width: 800px){
     body{
-        font-size: 20px;
-        grid-template-rows: [first-body-row] 60px [second-body-row] 60px [third-body-row] 1fr [fourth-body-row] 0.5fr [fifth-body-row] 60px [sixth-body-row] 30px [end];
+        font-size: 1.25rem;
+        grid-template-rows: [first-body-row] 3.75rem [second-body-row] 3.75rem [third-body-row] 1fr [fourth-body-row] 0.5fr [fifth-body-row] 3.75rem [sixth-body-row] 1.875rem [end];
 
     }
 
     #bodyAfter {
-        grid-template-rows: [first-body-row] 60px [second-body-row] 60px [third-body-row] 0fr [fourth-body-row] 0.5fr [fifth-body-row] 60px [sixth-body-row] 30px [end];
+        grid-template-rows: [first-body-row] 3.75rem [second-body-row] 3.75rem [third-body-row] 0fr [fourth-body-row] 0.5fr [fifth-body-row] 3.75rem [sixth-body-row] 1.875rem [end];
     }
     
 
@@ -156,7 +156,7 @@ button {
     }
 
     button {
-        font-size: 20px;
+        font-size: 1.25rem;
     }
 }
 
