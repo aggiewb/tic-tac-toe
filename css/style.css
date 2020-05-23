@@ -1,15 +1,15 @@
 body {
     display: grid;
-    grid-template-rows: [first-body-row] 100px [second-body-row] 100px [third-body-row] 1fr [fourth-body-row] 1fr [fifth-body-row] 100px [sixth-body-row] 40px [end];
+    grid-template-rows: [first-body-row] 125px [second-body-row] 125px [third-body-row] 0.5fr [fourth-body-row] 0.5fr [fifth-body-row] 100px [sixth-body-row] 40px [end];
     background-color: black;
     justify-items: center;
     font-family: 'Galindo', cursive;
-    font-size: 30px;
+    font-size: 40px;
     color: white;
 }
 
 #bodyAfter {
-    grid-template-rows: [first-body-row] 100px [second-body-row] 100px [third-body-row] 0fr [fourth-body-row] 2fr [fifth-body-row] 100px [sixth-body-row] 40px [end];
+    grid-template-rows: [first-body-row] 125px [second-body-row] 125px [third-body-row] 0fr [fourth-body-row] 1fr [fifth-body-row] 100px [sixth-body-row] 40px [end];
 }
 
 h1 {
@@ -32,7 +32,6 @@ div {
 
 p {
     grid-row: second-body-row / third-body-row;
-    font-size: 40px;
     color: orange;
 }
 
@@ -46,6 +45,7 @@ button {
     background-color: black;
     border: 5px solid white;
     color: white;
+    font-family: 'Galindo', cursive;
     font-size: 24px;
     padding: 5px;
 }
@@ -137,6 +137,27 @@ button {
 #i-box{
     grid-column: third-column / end;
     grid-row: third-row / end;  
+}
+
+@media only screen and (max-width: 800px){
+    body{
+        font-size: 20px;
+        grid-template-rows: [first-body-row] 60px [second-body-row] 60px [third-body-row] 1fr [fourth-body-row] 0.5fr [fifth-body-row] 60px [sixth-body-row] 30px [end];
+
+    }
+
+    #bodyAfter {
+        grid-template-rows: [first-body-row] 60px [second-body-row] 60px [third-body-row] 0fr [fourth-body-row] 0.5fr [fifth-body-row] 60px [sixth-body-row] 30px [end];
+    }
+    
+
+    img {
+        max-width: 50%;
+    }
+
+    button {
+        font-size: 20px;
+    }
 }
 
 
