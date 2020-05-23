@@ -1,5 +1,6 @@
 var HardMode = {};
 (function() {
+    var EMPTY_SPACE_CLASS = 'unmarked';
     var WINNING_COMBINATIONS = HardMode.WINNING_COMBINATIONS = [
         ['a-box', 'b-box', 'c-box'],
         ['d-box', 'e-box', 'f-box'],
@@ -16,7 +17,7 @@ var HardMode = {};
     * If so, returns the winning space's element Id. Otherwise, returns undefined.
     */
     HardMode.getWinningId = function() {
-        var emptyIds = Array.from(document.querySelectorAll('.unmarked')).map(function(emptySpace) {
+        var emptyIds = Array.from(document.querySelectorAll('.' + EMPTY_SPACE_CLASS)).map(function(emptySpace) {
             return emptySpace.id;
         });
         var markerById = {};
@@ -46,7 +47,7 @@ var HardMode = {};
                     }
                 }
             }
-            if (occupiedCount === 2) {
+            if (occupiedCount === 2 && possibleWinningId) {
                 return possibleWinningId;
             }
             possibleWinningId = null;
