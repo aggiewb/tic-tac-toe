@@ -92,7 +92,7 @@ var HardMode = {};
             return '#' + id + '.' + EMPTY_SPACE_CLASS;
         });
         var emptyCorner = document.querySelector(emptyCornerSelectors.toString());
-        if (emptyCorner) {
+        if (emptyCorner !== null) {
             return emptyCorner;
         }
 
