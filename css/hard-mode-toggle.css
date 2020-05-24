@@ -21,7 +21,6 @@
 .toggle-button {
     cursor: pointer;
     position: absolute;
-    z-index: 2;
     border-radius: 50%;
     width: 1.2rem;
     height: 1.2rem;
