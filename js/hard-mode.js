@@ -105,5 +105,7 @@ var HardMode = {};
     };
 
     document.querySelector('.toggle-button').addEventListener('click', HardMode.toggleEnabled);
+    // Needed for testing via Node libraries - module object is defined in a script tag above this one in the markup
+    // to prevent errors from being thrown
     module.exports = HardMode;
 })();
