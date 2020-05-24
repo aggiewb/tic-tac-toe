@@ -18,7 +18,7 @@ var HardMode = {};
    ];
 
    HardMode.isEnabled = false;
-   
+
     /**
     * Gets all empty spaces on the board and checks if any of them are the last space needed to make a winning move.
     * If so, returns the winning space's element Id. Otherwise, returns undefined.
@@ -90,5 +90,16 @@ var HardMode = {};
         return document.querySelector('.' + EMPTY_SPACE_CLASS);
     };
 
+    HardMode.toggleHardModeSliderVisibility = function() {
+        document.querySelector('.toggle-container').classList.toggle('hide');
+    };
+
+    HardMode.toggleEnabled = function(event) {
+        event.target.classList.toggle('enabled');
+        HardMode.isEnabled = !HardMode.isEnabled;
+        document.querySelector('.toggle-fill').classList.toggle('fill-enabled');
+    };
+
+    document.querySelector('.toggle-button').addEventListener('click', HardMode.toggleEnabled);
     module.exports = HardMode;
 })();

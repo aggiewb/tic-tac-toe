@@ -28,6 +28,7 @@ function handleSelectionClick(event){
     document.body.setAttribute('id', 'bodyAfter'); //adjust grid layout to remove selection grid
     selectionDiv.innerHTML = ""; //remove outer div containing selection images
     document.getElementById('board-hide').setAttribute('id', 'game-board');
+    HardMode.toggleHardModeSliderVisibility();
     initialMove();
 }
 
@@ -137,6 +138,7 @@ function gameOver(userMessage){
     isGameOver = true;
     pElementMessageToUser.textContent = userMessage;
     document.querySelector('button').removeAttribute('id');
+    HardMode.toggleHardModeSliderVisibility();
     removeListenerAfterWin();
 }
 
