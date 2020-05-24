@@ -61,17 +61,22 @@ function handleBoardClick(event){
         addMark(event.target, 'cross');
     }
     isComputerTurn = true; //set computer to play after user plays
-    //check to see if a win has been achieved before the computer makes its move, 
+    //check to see if a win has been achieved before the computer makes its move,
     //and prevent it from doing so if there is a win or draw
-    if(isGameOver){ 
+    if(isGameOver){
         return;
     }
     computerMove();
 }
 
 function computerMove(){
-    var unmarkedBoxes = document.getElementsByClassName('unmarked'); //all div boxes that haven't been used
-    var computerMove = unmarkedBoxes[Math.floor(Math.random() * unmarkedBoxes.length)] //selection of random unused div element box
+    var computerMove;
+    if (!HardMode.isEnabled) {
+        var unmarkedBoxes = document.getElementsByClassName('unmarked'); //all div boxes that haven't been used
+        computerMove = unmarkedBoxes[Math.floor(Math.random() * unmarkedBoxes.length)] //selection of random unused div element box
+    } else {
+        computerMove = HardMode.computerMove();
+    }
     if(userMarker === 'nought'){
         addMark(computerMove, 'cross');
     } else {
@@ -104,7 +109,7 @@ function checkVictory(markedElements){
     for(var i = 0; i < markedElements.length; i++){
         markedIds.push(markedElements[i].id);
     }
-    
+
     //checks each array in winningElement to see if one matches the markedIds
     for(var i = 0; i < winningElements.length; i++){
         var count = 0;
