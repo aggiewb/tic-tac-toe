@@ -54,5 +54,30 @@ var HardMode = {};
         }
     };
 
+    function buildSelectors(id) {
+        return '#' + id + '.' + EMPTY_SPACE_CLASS;
+    }
+
+    HardMode.computerMove = function() {
+        var winningId = HardMode.getWinningId();
+        if (winningId) {
+            return document.getElementById(winningId);
+        }
+
+        var centerSpace = document.getElementById('e-box');
+        if (centerSpace.className === EMPTY_SPACE_CLASS) {
+            return centerSpace;
+        }
+
+        var emptyCornerSelectors = ['a-box', 'c-box', 'g-box', 'i-box'].map(buildSelectors);
+        var emptyCorner = document.querySelector(emptyCornerSelectors.toString());
+        if (emptyCorner) {
+            return emptyCorner;
+        }
+
+        var emptySideSelectors = ['b-box', 'd-box', 'f-box', 'h-box'].map(buildSelectors);
+        return document.querySelector(emptySideSelectors);
+    };
+
     module.exports = HardMode;
 })();
