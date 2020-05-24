@@ -1,0 +1,48 @@
+/******************************************************************************************************************
+* @description          Stylesheet used for the hard mode toggle button
+* @createdDate          05/23/2020
+* @author               Steven Bateman
+*******************************************************************************************************************
+* Modification Log
+* Developer name        Date                Description of changes
+******************************************************************************************************************/
+.hide {
+    display: none;
+}
+
+.toggle-container p {
+    text-align: center;
+    color: orange;
+    grid-row: inherit;
+    margin: 10px;
+}
+
+.hard-mode-toggle {
+    border-radius: 20%;
+    width: 50px;
+    margin: 0 auto;
+    height: 5px;
+    background-color: white;
+    position: relative;
+}
+
+.toggle-button {
+    cursor: pointer;
+    position: absolute;
+    border-radius: 50%;
+    width: 1.2rem;
+    height: 1.2rem;
+    top: 50%;
+    left: 0;
+    background-color: orange;
+    transform: translate(0, -50%);
+}
+
+.enabled {
+    left: inherit;
+    right: 0;
+}
+
+.fill-enabled {
+    background-color: #b64013;
+}
