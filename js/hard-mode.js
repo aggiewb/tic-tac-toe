@@ -31,7 +31,7 @@ var HardMode = {};
         for (var i = 0; i < WINNING_COMBINATIONS.length; i++) {
             var occupiedCount = 0;
             var occupiedMarker;
-            var possibleWinningId;
+            var possibleWinningId = null;
             var winningCombination = WINNING_COMBINATIONS[i];
             for (var j = 0; j < winningCombination.length; j++) {
                 var spaceId = winningCombination[j];
@@ -57,7 +57,6 @@ var HardMode = {};
             if (occupiedCount === 2 && possibleWinningId) {
                 return possibleWinningId;
             }
-            possibleWinningId = null;
         }
     };
 
