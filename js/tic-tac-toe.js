@@ -8,6 +8,8 @@
 * Steven Bateman        05/23/2020          Modified the computerMove function to check if the HardMode class's
 *                                           isEnabled property is true and, if so, use that class's computerMove
 *                                           logic to determine where to place the computer's marker
+* Aggie Wheeler Bateman 05/24/2020          Add if/else block to checkVictory function for different calls of 
+                                            gameOver function when HardMore.isEnabled
 ******************************************************************************************************************/
 //global variables to use in multiple functions
 var userMarker;
@@ -133,13 +135,21 @@ function checkVictory(markedElements){
 
         //checks for a matching 3 array elements at the end of each winningElement array check
         if(count === 3 && isComputerTurn){
-            gameOver("The computer wins!");
+            if(HardMode.isEnabled){
+                gameOver("I win, inferior human.");
+            } else {
+                gameOver("The computer wins!");
+            }
             return;
         } else if(count === 3 && !isComputerTurn){
             gameOver("You win!");
             return;
         } else if(document.querySelectorAll('.unmarked').length === 0 && i === winningElements.length - 1){
-            gameOver("It's a draw!");
+            if(HardMode.isEnabled){
+                gameOver("Mediocre try, inferior human.");
+            } else {
+                gameOver("It's a draw");
+            }
         }
     }
 }
