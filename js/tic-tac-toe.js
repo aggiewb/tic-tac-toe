@@ -118,10 +118,9 @@ function checkVictory(markedElements){
     const winningElements = [['a-box', 'b-box', 'c-box'], ['d-box', 'e-box', 'f-box'], ['g-box', 'h-box', 'i-box'], //rows
                            ['a-box', 'd-box', 'g-box'], ['b-box', 'e-box', 'h-box'], ['c-box', 'f-box', 'i-box'], //columns
                            ['a-box', 'e-box', 'i-box'], ['c-box', 'e-box', 'g-box']]; //diagonals
-    const markedIds = [];
-
-    //adds all elements that have been marked of a players mark type passed in to an empty array
-    Array.of(markedElements).map(markedElement => markedIds.push(markedElement.id));
+    
+    //adds all elements that have been marked of a players mark type to an array
+    const markedIds = Array.from(markedElements).map(markedElement => markedElement.id);
 
     //checks each array in winningElement to see if one matches the markedIds
     for(let i = 0; i < winningElements.length; i++){
