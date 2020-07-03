@@ -162,10 +162,8 @@ function gameOver(userMessage){
 
 
 function removeListenerAfterWin(){
-    const unmarkedElements = document.getElementsByClassName('unmarked');
-    for(let i = 0; i < unmarkedElements.length; i++){
-        unmarkedElements[i].removeEventListener('click', handleBoardClick);
-    }
+    const unmarkedElements = Array.from(document.getElementsByClassName('unmarked'));
+    unmarkedElements.forEach(unmarkedElement => unmarkedElement.removeEventListener('click', handleBoardClick));
 }
 
 //next three functions reset the board state, selection state, and adds/removes playAgain button which has an eventListener
