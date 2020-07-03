@@ -9,7 +9,9 @@
 *                                           isEnabled property is true and, if so, use that class's computerMove
 *                                           logic to determine where to place the computer's marker
 * Aggie Wheeler Bateman 05/24/2020          Add if/else block to checkVictory function for different calls of 
-                                            gameOver function when HardMore.isEnabled
+*                                           gameOver function when HardMore.isEnabled
+* Aggie Wheeler Bateman 07/03/2020          Update to use ES6 syntax and new Array function, and update to use
+*                                           more functional programming
 ******************************************************************************************************************/
 (function(){
 //global variables to use in multiple functions
