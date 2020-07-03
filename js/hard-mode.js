@@ -36,9 +36,7 @@
     * turn.
     */
     HardMode.getWinningId = function() {
-        const emptyIds = Array.from(document.querySelectorAll('.' + EMPTY_SPACE_CLASS)).map(function(emptySpace) {
-            return emptySpace.id;
-        });
+        const emptyIds = Array.from(document.querySelectorAll(`.${EMPTY_SPACE_CLASS}`)).map(emptySpace => emptySpace.id);
         const markerById = {};
         for (let i = 0; i < WINNING_COMBINATIONS.length; i++) {
             let firstOccupiedSpaceMarker = null;
@@ -90,15 +88,13 @@
             return centerSpace;
         }
 
-        const emptyCornerSelectors = ['a', 'c', 'g', 'i'].map(function(id) {
-            return '#' + id + '-box.' + EMPTY_SPACE_CLASS;
-        });
+        const emptyCornerSelectors = ['a', 'c', 'g', 'i'].map(id => `#${id}-box.${EMPTY_SPACE_CLASS}`);
         const emptyCorner = document.querySelector(emptyCornerSelectors.toString());
         if (emptyCorner !== null) {
             return emptyCorner;
         }
 
-        return document.querySelector('.' + EMPTY_SPACE_CLASS);
+        return document.querySelector(`.${EMPTY_SPACE_CLASS}`);
     };
 
     HardMode.toggleHardModeSliderVisibility = function() {
