@@ -7,11 +7,13 @@
 *******************************************************************************************************************
 * Modification Log
 * Developer name        Date                Description of changes
+* Aggie Wheeler Bateman 07/03/2020          Update to use ES6 syntax
 ******************************************************************************************************************/
-var HardMode = {};
-(function() {
-    var EMPTY_SPACE_CLASS = 'unmarked';
-    var WINNING_COMBINATIONS = [
+(function(exports) {
+    'use strict';
+    const HardMode = exports.HardMode = {};
+    const EMPTY_SPACE_CLASS = 'unmarked';
+    const WINNING_COMBINATIONS = [
         ['a-box', 'b-box', 'c-box'],
         ['d-box', 'e-box', 'f-box'],
         ['g-box', 'h-box', 'i-box'],
@@ -34,16 +36,14 @@ var HardMode = {};
     * turn.
     */
     HardMode.getWinningId = function() {
-        var emptyIds = Array.from(document.querySelectorAll('.' + EMPTY_SPACE_CLASS)).map(function(emptySpace) {
-            return emptySpace.id;
-        });
-        var markerById = {};
-        for (var i = 0; i < WINNING_COMBINATIONS.length; i++) {
-            var firstOccupiedSpaceMarker = null;
-            var possibleWinningId = null;
-            var winningCombination = WINNING_COMBINATIONS[i];
-            for (var j = 0; j < winningCombination.length; j++) {
-                var spaceId = winningCombination[j];
+        const emptyIds = Array.from(document.querySelectorAll(`.${EMPTY_SPACE_CLASS}`)).map(emptySpace => emptySpace.id);
+        const markerById = {};
+        for (let i = 0; i < WINNING_COMBINATIONS.length; i++) {
+            let firstOccupiedSpaceMarker = null;
+            let possibleWinningId = null;
+            const winningCombination = WINNING_COMBINATIONS[i];
+            for (let j = 0; j < winningCombination.length; j++) {
+                const spaceId = winningCombination[j];
                 if (emptyIds.includes(spaceId)) {
                     if (possibleWinningId !== null) {
                         possibleWinningId = null;
@@ -51,7 +51,7 @@ var HardMode = {};
                     }
                     possibleWinningId = spaceId;
                 } else {
-                    var occupyingMarker = markerById[spaceId];
+                    let occupyingMarker = markerById[spaceId];
                     if (occupyingMarker === undefined) {
                         occupyingMarker = document.getElementById(spaceId).className;
                         markerById[spaceId] = occupyingMarker;
@@ -78,25 +78,23 @@ var HardMode = {};
     * 4. Any remaining available space
     */
     HardMode.computerMove = function() {
-        var winningId = HardMode.getWinningId();
+        const winningId = HardMode.getWinningId();
         if (winningId !== undefined) {
             return document.getElementById(winningId);
         }
 
-        var centerSpace = document.getElementById('e-box');
+        const centerSpace = document.getElementById('e-box');
         if (centerSpace.className === EMPTY_SPACE_CLASS) {
             return centerSpace;
         }
 
-        var emptyCornerSelectors = ['a', 'c', 'g', 'i'].map(function(id) {
-            return '#' + id + '-box.' + EMPTY_SPACE_CLASS;
-        });
-        var emptyCorner = document.querySelector(emptyCornerSelectors.toString());
+        const emptyCornerSelectors = ['a', 'c', 'g', 'i'].map(id => `#${id}-box.${EMPTY_SPACE_CLASS}`);
+        const emptyCorner = document.querySelector(emptyCornerSelectors.toString());
         if (emptyCorner !== null) {
             return emptyCorner;
         }
 
-        return document.querySelector('.' + EMPTY_SPACE_CLASS);
+        return document.querySelector(`.${EMPTY_SPACE_CLASS}`);
     };
 
     HardMode.toggleHardModeSliderVisibility = function() {
@@ -119,4 +117,4 @@ var HardMode = {};
     // Needed for testing via Node libraries - module object is defined in a script tag above this one in the markup
     // to prevent errors from being thrown
     module.exports = HardMode;
-})();
+})(window);
