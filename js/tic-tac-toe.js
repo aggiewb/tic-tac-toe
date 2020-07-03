@@ -37,9 +37,9 @@ addElementListener(document.getElementsByTagName('button'));
 function handleSelectionClick(event){
     userMarker = event.currentTarget.id;
     const selectionDiv = event.currentTarget.parentNode; //outer div containing selection images
-    pElementMessageToUser.textContent = "Good Luck!";
+    pElementMessageToUser.textContent = 'Good Luck!';
     document.body.setAttribute('id', 'bodyAfter'); //adjust grid layout to remove selection grid
-    selectionDiv.innerHTML = ""; //remove outer div containing selection images
+    selectionDiv.innerHTML = ''; //remove outer div containing selection images
     document.getElementById('board-hide').setAttribute('id', 'game-board');
     HardMode.toggleHardModeSliderVisibility();
     initialMove();
@@ -49,9 +49,9 @@ function chooseFirstPlayer(){
     const players = ['You', 'Computer'];
     let firstPlayer = players[Math.floor(Math.random() * 2)]; //randomly chooses which player will go first
     if(firstPlayer === 'You'){
-        pElementMessageToUser.textContent = firstPlayer + " move first!";
+        pElementMessageToUser.textContent = firstPlayer + ' move first!';
     } else {
-        pElementMessageToUser.textContent = firstPlayer + " has the first move!";
+        pElementMessageToUser.textContent = firstPlayer + ' has the first move!';
     }
     return firstPlayer;
 }
@@ -59,7 +59,7 @@ function chooseFirstPlayer(){
 //function to be called after user marker selection is made
 function initialMove(){
     let player = chooseFirstPlayer();
-    if(player === "Computer"){
+    if(player === 'Computer'){
         isComputerTurn = true;
         computerMove();
     }
@@ -136,19 +136,19 @@ function checkVictory(markedElements){
         //checks for a matching 3 array elements at the end of each winningElement array check
         if(count === 3 && isComputerTurn){
             if(HardMode.isEnabled){
-                gameOver("I win, inferior human.");
+                gameOver('I win, inferior human.');
             } else {
-                gameOver("The computer wins!");
+                gameOver('The computer wins!');
             }
             return;
         } else if(count === 3 && !isComputerTurn){
-            gameOver("You win!");
+            gameOver('You win!');
             return;
         } else if(document.querySelectorAll('.unmarked').length === 0 && i === winningElements.length - 1){
             if(HardMode.isEnabled){
-                gameOver("Mediocre try, inferior human.");
+                gameOver('Mediocre try, inferior human.');
             } else {
-                gameOver("It's a draw");
+                gameOver('It's a draw');
             }
         }
     }
@@ -187,7 +187,7 @@ function playAgain(){
 }
 
 function resetSelectionState(){
-    pElementMessageToUser.textContent = "Select cross or nought:"; //add selection div and contents
+    pElementMessageToUser.textContent = 'Select cross or nought:'; //add selection div and contents
     document.body.removeAttribute('id');
     const selectionDiv = document.getElementById('selection');
     const crossImageElement = document.createElement('div');
@@ -226,4 +226,4 @@ function resetGameBoardState(){
 }
 
 let date = new Date();
-document.querySelector('footer').innerHTML = "Aggie Wheeler Bateman &copy; " +  date.getFullYear() + "<a href=\"https://www.aggiewheelerbateman.com\" target=\"_blank\">Personal Portfolio</a>";
+document.querySelector('footer').innerHTML = 'Aggie Wheeler Bateman &copy; ' +  date.getFullYear() + '<a href=\'https://www.aggiewheelerbateman.com\' target=\'_blank\'>Personal Portfolio</a>';
