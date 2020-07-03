@@ -120,9 +120,7 @@ function checkVictory(markedElements){
     const markedIds = [];
 
     //adds all elements that have been marked of a players mark type passed in to an empty array
-    for(let i = 0; i < markedElements.length; i++){
-        markedIds.push(markedElements[i].id);
-    }
+    Array.of(markedElements).map(markedElement => markedIds.push(markedElement.id));
 
     //checks each array in winningElement to see if one matches the markedIds
     for(let i = 0; i < winningElements.length; i++){
@@ -148,7 +146,7 @@ function checkVictory(markedElements){
             if(HardMode.isEnabled){
                 gameOver('Mediocre try, inferior human.');
             } else {
-                gameOver('It's a draw');
+                gameOver('It\'s a draw');
             }
         }
     }
