@@ -102,8 +102,7 @@ function computerMove(){
 
 //function to add either a cross or nought mark
 function addMark(element, mark){
-    const markImageElement = document.createElement('img');
-    markImageElement.setAttribute('src', 'media/' + mark + '.png');
+    const markImageElement = createElement('img', 'src', `media/${mark}.png`);
     element.appendChild(markImageElement);
     element.removeEventListener('click', handleBoardClick);
     element.removeAttribute('class'); //remove class of 'unmarked'
@@ -188,16 +187,10 @@ function resetSelectionState(){
     pElementMessageToUser.textContent = 'Select cross or nought:'; //add selection div and contents
     document.body.removeAttribute('id');
     const selectionDiv = document.getElementById('selection');
-    const crossImageElement = document.createElement('div');
-    const noughtImageElement = document.createElement('div');
-    const crossImage = document.createElement('img');
-    const noughtImage = document.createElement('img');
-    crossImage.setAttribute('src', 'media/cross.png');
-    noughtImage.setAttribute('src', 'media/nought.png');
-    crossImageElement.setAttribute('id', 'cross');
-    noughtImageElement.setAttribute('id', 'nought');
-    crossImageElement.appendChild(crossImage);
-    noughtImageElement.appendChild(noughtImage);
+    const crossImageElement = createElement('div', 'id', 'cross');
+    const noughtImageElement = createElement('div', 'id', 'nought');
+    crossImageElement.appendChild(createElement('img', 'src', 'media/cross.png'));
+    noughtImageElement.appendChild(createElement('img', 'src', 'media/nought.png'));
     selectionDiv.appendChild(crossImageElement);
     selectionDiv.appendChild(noughtImageElement);
 }
@@ -221,6 +214,12 @@ function resetGameBoardState(){
             resetGameBoardElements[i].removeChild(resetGameBoardElements[i].querySelector('img'));
         }
     }
+}
+
+function createElement(type, attributeKey, attributeValue){
+    const element = document.createElement(type);
+    element.setAttribute(attributeKey, attributeValue);
+    return element;
 }
 
 let date = new Date();
