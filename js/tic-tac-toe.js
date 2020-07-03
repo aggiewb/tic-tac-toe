@@ -11,6 +11,7 @@
 * Aggie Wheeler Bateman 05/24/2020          Add if/else block to checkVictory function for different calls of 
                                             gameOver function when HardMore.isEnabled
 ******************************************************************************************************************/
+(function(){
 //global variables to use in multiple functions
 let userMarker;
 let isComputerTurn = false;
@@ -225,3 +226,4 @@ function resetGameBoardState(){
 
 let date = new Date();
 document.querySelector('footer').innerHTML = 'Aggie Wheeler Bateman &copy; ' +  date.getFullYear() + '<a href=\'https://www.aggiewheelerbateman.com\' target=\'_blank\'>Personal Portfolio</a>';
+})();
