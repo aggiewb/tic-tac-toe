@@ -42,7 +42,7 @@
         userMarker = event.currentTarget.id;
         const selectionDiv = event.currentTarget.parentNode; //outer div containing selection images
         pElementMessageToUser.textContent = 'Good Luck!';
-        document.body.setAttribute('id', 'bodyAfter'); //adjust grid layout to remove selection grid
+        document.body.setAttribute('id', 'body-after'); //adjust grid layout to remove selection grid
         selectionDiv.innerHTML = ''; //remove outer div containing selection images
         document.getElementById('board-hide').setAttribute('id', 'game-board');
         HardMode.toggleHardModeSliderVisibility();

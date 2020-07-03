@@ -16,7 +16,7 @@ body {
     color: white;
 }
 
-#bodyAfter {
+#body-after {
     grid-template-rows: [first-body-row] 7.8125rem [second-body-row] 7.8125rem [third-body-row] 0fr [fourth-body-row] 1fr [fifth-body-row] 6.25rem [sixth-body-row] 2.5rem [end];
 }
 
