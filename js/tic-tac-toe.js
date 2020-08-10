@@ -70,8 +70,6 @@
     }
 
     function handleBoardClick(event){
-    //event is the object that represents the event fired
-    //target is an object that represents the element that fired the event
     //cannot use elements[i] since when the event is fired, i will always be outside of the elements' NodeList indexes
         if(userMarker === 'nought'){
             addMark(event.target, 'nought');
