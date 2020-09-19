@@ -9,7 +9,7 @@ User Story: I can choose whether I want to play as X or O.
 User Story: I can choose to play on a harder difficulty.
 
 To add to this project, fork repo, then run npm i to install to be able
-to run the script `npm run lint` which runs a linter against the JS files 
+to run the script `npm run lint` which runs a linter against the files 
 in the js directory with the rules indicated in the .eslintrc.json file.
 
 Update or add the modification log on any html, css, or js file existing 
