@@ -10,7 +10,7 @@ User Story: I can choose to play on a harder difficulty.
 
 To add to this project, fork repo, then run npm i to install to be able
 to run the script `npm run lint` which runs a linter against the JS files 
-in the server directory with the rules indicated in the .eslintrc.json file.
+in the js directory with the rules indicated in the .eslintrc.json file.
 
 Update or add the modification log on any html, css, or js file existing 
 (which must include your name, date, and description of changes), 
