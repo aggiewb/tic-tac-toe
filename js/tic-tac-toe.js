@@ -222,5 +222,5 @@
     }
 
     const date = new Date();
-    document.querySelector('footer').innerHTML = 'Aggie Wheeler Bateman &copy; ' +  date.getFullYear() + '<a href=\'https://www.aggiewb.com\' target=\'_blank\'>Personal Portfolio</a>';
+    document.querySelector('footer').innerHTML = 'Aggie Wheeler Bateman &copy; ' +  date.getFullYear();
 })();
